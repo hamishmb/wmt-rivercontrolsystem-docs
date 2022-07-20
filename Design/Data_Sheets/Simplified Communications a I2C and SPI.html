@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.matrixtsl.com/blog/xmlrpc.php">
+<title>Simplified Communications &#8211; I²C and SPI</title>
+
+<!-- All in One SEO Pack 2.3.11.1 by Michael Torbert of Semper Fi Web Design[257,329] -->
+<meta name="description"  content="Many of today's modern sensors, actuators, display, memory and other IC's come with an external interface allowing them to be controlled from a master device." />
+
+<link rel="canonical" href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Matrix Blog &raquo; Feed" href="https://www.matrixtsl.com/blog/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Matrix Blog &raquo; Comments Feed" href="https://www.matrixtsl.com/blog/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Matrix Blog &raquo; Simplified Communications &#8211; I²C and SPI Comments Feed" href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.matrixtsl.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.4"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='a3-pvc-style-css'  href='https://www.matrixtsl.com/blog/wp-content/plugins/page-views-count/assets/css/style.min.css?ver=1.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='point-style-css'  href='https://www.matrixtsl.com/blog/wp-content/themes/point/style.css?ver=4.7.4' type='text/css' media='all' />
+<style id='point-style-inline-css' type='text/css'>
+
+        a:hover, .menu .current-menu-item > a, .menu .current-menu-item, .current-menu-ancestor > a.sf-with-ul, .current-menu-ancestor, footer .textwidget a, .single_post a, #commentform a, .copyrights a:hover, a, footer .widget li a:hover, .menu > li:hover > a, .single_post .post-info a, .post-info a, .readMore a, .reply a, .fn a, .carousel a:hover, .single_post .related-posts a:hover, .sidebar.c-4-12 .textwidget a, footer .textwidget a, .sidebar.c-4-12 a:hover, .title a:hover, .trending-articles li a:hover { color: #7670B3; }
+        .nav-previous a, .nav-next a, .sub-menu, #commentform input#submit, .tagcloud a, #tabber ul.tabs li a.selected, .featured-cat, .mts-subscribe input[type='submit'], .pagination a, .widget .wpt_widget_content #tags-tab-content ul li a, .latestPost-review-wrapper, .pagination .dots, .primary-navigation #wpmm-megamenu .wpmm-posts .wpmm-pagination a, #wpmm-megamenu .review-total-only { background: #7670B3; color: #fff; } .header-button { background: #38B7EE; } #logo a { color: ##555; }
+			
+</style>
+<link rel='stylesheet' id='theme-slug-fonts-css'  href='//fonts.googleapis.com/css?family=Droid+Sans%3A400%2C700' type='text/css' media='all' />
+<link rel='stylesheet' id='social-logos-css'  href='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/css/jetpack.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='https://www.matrixtsl.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.matrixtsl.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.matrixtsl.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='CAN bus communications &#8211; design and analysis using Flowcode 6' href='https://www.matrixtsl.com/blog/can-bus-communications-design-and-analysis-using-flowcode-6/' />
+<link rel='next' title='I2C Slave&#8230;Coming soon!' href='https://www.matrixtsl.com/blog/i2c-slave-coming-soon/' />
+<meta name="generator" content="WordPress 4.7.4" />
+<link rel='shortlink' href='https://wp.me/p4fMaY-bN' />
+<link rel="alternate" type="application/json+oembed" href="https://www.matrixtsl.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.matrixtsl.com%2Fblog%2Fsimplified-communications-i%25c2%25b2c-and-spi%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.matrixtsl.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.matrixtsl.com%2Fblog%2Fsimplified-communications-i%25c2%25b2c-and-spi%2F&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<link rel='dns-prefetch' href='//widgets.wp.com'>
+<link rel='dns-prefetch' href='//s0.wp.com'>
+<link rel='dns-prefetch' href='//0.gravatar.com'>
+<link rel='dns-prefetch' href='//1.gravatar.com'>
+<link rel='dns-prefetch' href='//2.gravatar.com'>
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'>
+<link rel='dns-prefetch' href='//s1.wp.com'>
+<link rel='dns-prefetch' href='//s2.wp.com'>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'>
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: ##e7e5e6; }
+</style>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Simplified Communications &#8211; I²C and SPI" />
+<meta property="og:url" content="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/" />
+<meta property="og:description" content="Many of today&#8217;s modern sensors, actuators, display, memory and other IC&#8217;s come with an external interface allowing them to be controlled from a master device. This master device could b…" />
+<meta property="article:published_time" content="2014-09-19T14:28:32+00:00" />
+<meta property="article:modified_time" content="2014-09-19T14:28:32+00:00" />
+<meta property="og:site_name" content="Matrix Blog" />
+<meta property="og:image" content="http://matrixtsl.com/blog/wp-content/uploads/2014/09/SPIRead.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@MatrixTSL" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@MatrixFlowcode" />
+</head>
+
+<body id="blog" class="post-template-default single single-post postid-731 single-format-standard custom-background">
+<div class="main-container">
+
+			<div class="trending-articles">
+			<ul>
+				<li class="firstlink">Now Trending:</li>
+									<li class="trendingPost ">
+						<a href="https://www.matrixtsl.com/blog/delivering-the-20162017-btec-nationals-higher-nationals-in-engineering/" title="Delivering the 2016/2017 BTEC Nationals &#038; Higher Nationals in Engineering" rel="bookmark">Delivering the 2016/2017...</a>
+					</li>                   
+									<li class="trendingPost ">
+						<a href="https://www.matrixtsl.com/blog/supporting-wjeceduqas-a-level-electronics/" title="Supporting WJEC/Eduqas A-Level Electronics" rel="bookmark">Supporting WJEC/Eduqas A...</a>
+					</li>                   
+									<li class="trendingPost ">
+						<a href="https://www.matrixtsl.com/blog/science-engineering-technology-by-matrix/" title="Science, Engineering, Technology by Matrix" rel="bookmark">Science, Engineering, Te...</a>
+					</li>                   
+									<li class="trendingPost last">
+						<a href="https://www.matrixtsl.com/blog/matrix-atlab-supplying-stem-education-in-the-uae/" title="Matrix &#038; ATLAB &#8211; supplying STEM education in the UAE" rel="bookmark">Matrix &#038; ATLAB &#82...</a>
+					</li>                   
+							</ul>
+		</div>
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+												<h2 id="logo" class="text-logo" itemprop="headline">
+						<a href="https://www.matrixtsl.com/blog">Matrix Blog</a>
+					</h2><!-- END #logo -->
+										
+			<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+			<div class="primary-navigation">
+				<nav id="navigation" class="mobile-menu-wrapper" role="navigation">
+																				</nav><!-- #navigation -->
+			</div><!-- .primary-navigation -->
+		</div><!-- .site-branding -->
+
+	</header><!-- #masthead -->
+
+		
+		<div id="page" class="single">
+	<div class="content">
+		<!-- Start Article -->
+		<article class="article">		
+							<div id="post-731" class="post post-731 type-post status-publish format-standard has-post-thumbnail hentry category-examples category-flowcode category-hardware">
+					<div class="single_post">
+						<header>
+							<!-- Start Title -->
+							<h1 class="title single-title">Simplified Communications &#8211; I²C and SPI</h1>
+							<!-- End Title -->
+							<!-- Start Post Meta -->
+							<div class="post-info"><span class="theauthor"><a href="https://www.matrixtsl.com/blog/author/benr/" title="Posts by Ben Rowland" rel="author">Ben Rowland</a></span> | <span class="thetime">September 19, 2014</span> | <span class="thecategory"><a href="https://www.matrixtsl.com/blog/category/examples/" rel="category tag">Examples</a>, <a href="https://www.matrixtsl.com/blog/category/flowcode/" rel="category tag">Flowcode</a>, <a href="https://www.matrixtsl.com/blog/category/hardware/" rel="category tag">Hardware</a></span> | <span class="thecomment"><a href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/#comments">3 Comments</a></span></div>
+							<!-- End Post Meta -->
+						</header>
+						<!-- Start Content -->
+						<div class="post-single-content box mark-links">
+														<p>Many of today&#8217;s modern sensors, actuators, display, memory and other IC&#8217;s come with an external interface allowing them to be controlled from a master device. This master device could be a simple microcontroller or it could be something more advanced like a Linux based Raspberry Pi. By far the most commonly used interface buses used by these devices are I²C and SPI. Both I²C and SPI are available in Master and Slave modes with the Master controlling all operations and the Slave listening to what the Master is telling it. </p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/I2CSPIComps.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/I2CSPIComps.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/I2CSPIComps.jpg" alt="I2CSPIComps" width="691" height="170" class="alignnone size-full wp-image-744" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/I2CSPIComps.jpg 691w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/I2CSPIComps-300x73.jpg 300w" sizes="(max-width: 691px) 100vw, 691px" /></a></p>
+<p>Flowcode currently supports the Master versions of these buses with Slave functionality planned for the near future. Both I²C and SPI components in Flowcode have a Channel property which allows you to target a specific peripheral on-board your microcontroller or switch to software mode in which case the bus is bit-banged using standard I/O pins.</p>
+<p><span id="more-731"></span></p>
+<p><strong>So what is I²C?</strong></p>
+<p>I²C (Inter-Integrated Circuit) is a bus originally developed by Phillips in 1982 which has subsequently been expanded and altered to create the I²C we know today. The bus consists of two signals SDA and SCL which stand for serial data and serial clock respectively. The bus can operate at various speeds which are generally dictated by the slowest device on the bus. Common bus speeds are 100K bits per second, 400K bits per second and 1M bits per second. The two bus signals can only be pulled low by the devices on the bus so they both require some kind of external pull up resistors. Sometimes the pull up resistor will be fitted into the slave device to reduce the number of external components. I²C is designed for fairly short range i.e. on the same PCB as the Master or via a relatively short cable. I²C devices may have external address pins which allows you to assign a unique address to each device and therefore allow multiple of the same device to operate on a single bus.</p>
+<p>One of the great upsides of the I²C bus is that it can do voltage level shifting for you. For example say we have a Master running at 5V but a slave running at 3V3. The I²C pullup resistors are connected between the signals and 3V3 allowing the bus to float at 3V3. The Master can still recognise the 3V3 input voltage as a logic one and no nasty 5V is allowed to reach and potentially damage the slave.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/i2clevelshift.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2clevelshift.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2clevelshift.jpg" alt="i2clevelshift" width="308" height="241" class="alignnone size-full wp-image-734" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2clevelshift.jpg 308w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2clevelshift-300x234.jpg 300w" sizes="(max-width: 308px) 100vw, 308px" /></a><br />
+I²C Voltage Shifting Schematic</p>
+<p>I²C has various operating states which generally always follow the same pattern, we have Start, Restart and Stop.</p>
+<p><strong>I²C Write Example</strong></p>
+<p>Here is an example to write a byte to a location on a typical I²C device. First we output a start condition to the I²C bus by using the start component macro. Next we transmit the device&#8217;s external 7-bit address specifying write mode. The address could be a simple fixed value or may combine a fixed value with external address pins for more flexibility. The read/write mode is signified by the least significant bit which is either a 0 for write or a 1 for read. The I²C device datasheet should detail the external address both with and without the read/write bit. In my examples I assume the address passed do not already contain the read/write bit. This explains the .ExtAddress << 1 which shifts the address up by one bit allowing room for the read/write bit.
+
+Address Byte - AAAA AAAM 
+A = 7-bit Address
+M = Mode of operation
+
+Once the address byte has been sent we then transmit an internal address byte. Depending on how many registers the device has there might be more than one internal address byte to allow us to address each of the various registers or memory locations. Finally we send the data byte to write to the register location and finish with a I²C stop.
+
+<a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/i2cWrite.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2cWrite.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2cWrite.jpg" alt="i2cWrite" width="612" height="509" class="alignnone size-full wp-image-737" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2cWrite.jpg 612w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2cWrite-300x249.jpg 300w" sizes="(max-width: 612px) 100vw, 612px" /></a></p>
+<p><strong>I²C Read Example</strong></p>
+<p>To read a data byte from a register requires a little bit more code as we have to startup in write mode to set the internal address and then restart into read mode to perform the read. Again we start by transmitting a send and using the 7-bit external address combined with the read/write bit in write mode. We then send the internal address like before. Next we differ from the write example by calling the restart component macro followed by re-sending the external address only this time with the read/write bit in read mode. We then use a receive byte component macro to receive the data from the internal register and complete the transaction with an I²C stop.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/i2cRead.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2cRead.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/i2cRead.jpg" alt="i2cRead" width="624" height="652" class="alignnone size-full wp-image-738" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2cRead.jpg 624w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/09/i2cRead-287x300.jpg 287w" sizes="(max-width: 624px) 100vw, 624px" /></a></p>
+<p>I²C can be a bit slow because of all of the setup to write or read a single byte. However there is a way of writing and reading multiple bytes by simply repeating the component macro Read/Write call before the I²C Stop is called. Each time you repeat the read or write the internal address will be automatically incremented. Note that the Read component macro has a parameter named Last, this should be set to 1 for the final read and 0 for all other reads which come before. This parameter just informs the slave device to expect more requests or not.</p>
+<p>An example of I2C communications in practice can be found here: <a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/?p=82');"  href="http://matrixtsl.com/blog/?p=82" title="Quadrocopter 1 – MPU-6050 Accelerometer and Gyro">Quadrocopter 1 – MPU-6050 Accelerometer and Gyro</a></p>
+<p><strong>So what is SPI?</strong></p>
+<p>SPI (Serial Peripheral Interface) is a bus originally developed by Motorola. The bus consists of up to four signals SDO, SDI, SCK and CS which stand for serial data out, serial data in, serial clock and chip select respectively. There are other names for the data pins to better establish the master / slave connections, SDO is known as MOSI (Master Out Slave In) and SDI is known as MISO (Master In Slave Out). The bus can operate at various speeds which are generally dictated by the slowest device on the bus. Common bus speeds are in the 1-100M bits per second range. The bus signals can be pulled low and high by the devices on the bus so no external components are required apart from maybe a pull up resistor on the chip select (CS) pin to keep the bus disabled while the master boots up. SPI is designed for fairly short range i.e. on the same PCB as the Master or via a relatively short cable. Multiple SPI devices can be connected to the same SPI bus as long as they each have their own unique chip select (CS) pin connection from the master. Only one slave device on the bus can be active at any one time.</p>
+<p>SPI is a lot less strict than I²C in that it does not have a rigid set of modes that need to be followed. The only real modes that SPI does have is active or disabled. There are however a set of configurations that can be done to the SPI bus namely what state the clock is in when idle and when in the clock cycle to sample to incoming data. One of the great advantages to the SPI bus is the high speed of operation allowing large quantities of data to be transferred quickly. Another advantage is that SPI is full duplex meaning it can receive data at the same time as transmitting data. In practice only one of the incoming or outgoing data bytes are generally put to use at any one time. 3-Wire SPI is a form of SPI used when one of the data signals is not required. For example a DAC device might not need the MISO signal and an ADC device might not need the MOSI signal.</p>
+<p>SPI will not do voltage level shifting like I²C so care should be taken to check that the voltages are correct for both the master and slave. If possible it is recommended to run both the master and slave at the same voltage. However for something like a 5V master and 3V3 slave you can use potential dividers to reduce the voltage of the master&#8217;s output pins.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/spilevelshift.bmp');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/spilevelshift.bmp"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/spilevelshift.bmp" alt="spilevelshift" width="447" height="267" class="alignnone size-full wp-image-747" /></a></p>
+<p>A typical SPI write operation might look like this.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/SPIWrite.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/SPIWrite.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/SPIWrite.jpg" alt="SPIWrite" width="574" height="365" class="alignnone size-full wp-image-742" /></a></p>
+<p>Where as a SPI read operation might look like this.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/SPIRead.jpg');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/SPIRead.jpg"><img src="http://matrixtsl.com/blog/wp-content/uploads/2014/09/SPIRead.jpg" alt="SPIRead" width="549" height="368" class="alignnone size-full wp-image-743" /></a></p>
+<p>Again there may be additional address bytes or differing protocol for your device so refer to the device datasheet for the exact specifics. Note that the CS (Chip Select) signal is not provided as part of the SPI Master component and you have to manipulate it yourself either using an output icon in single bit mode or creating a single pin property and manipulating the output state using a calculation icon.</p>
+<p>Pulling the chip select high has the effect of executing the operation on a lot of devices for example a DAC might not update it&#8217;s output voltage until a command has been clocked in and the chip select pulled high. You may also need delays after pulling the chip select high and pulling it low again for the next operation to allow time for the first operation to complete. Again this will be detailed in the device datasheet.</p>
+<p><strong>Conclusion</strong></p>
+<p>I²C and SPI buses are very simple to implement and open up a wide range of potential to your project. They are both designed for local use either on the same PCB as the master or via a short cable due to their high speed nature. Adding a interface header to your circuit board allow for future expansion and allows for things like process sharing. A good example of this would be a robot where there is a central brain that delegates fairly complex tasks like motor speed control to slave devices. This way the same host and multiples of the same slave can be used on a 2 wheeled robot and a 16 wheeled robot making the design very modular.</p>
+<p>I²C is great for low speed or fairly infrequent communications whereas SPI can be used for much faster communications. Care must be taken when designing PCBs to avoid the high speed bus signals from going near sensitive signals such as low current analogue voltages as they may start to pick up some of the high frequency noise created by the bus.</p>
+<p>Both buses essentially create a framework for operation however the actual protocol of bytes in and out will vary greatly from device to device. Flowcode provides the means of putting together the simple blocks which then allow you to create specific macros for specific devices. The examples show this type of mentality by creating parameter variables for things that can change and hard coding bits that will remain constant.</p>
+<p>Both components will need their Initialise component macro calling before any other component macros from the component are called to put the bus into a ready state. </p>
+<p>Both the I²C and SPI buses can be recorded in real time and decoded using the new Matrix Ghost Technology hardware and Flowcode 6 provided the buses are running at a low enough speed. This allows the communications and therefore the devices controlled by the comms to be easily debugged and analysed.</p>
+<p><a onclick="javascript:pageTracker._trackPageview('/outgoing/matrixtsl.com/blog/wp-content/uploads/2014/09/I2C-SPI.zip');"  href="http://matrixtsl.com/blog/wp-content/uploads/2014/09/I2C-SPI.zip">I2C &#038; SPI</a></p>
+<div class="pvc_clear"></div>
+<p class="pvc_stats" element-id="731">35,413&nbsp;total views, 30&nbsp;views today</p>
+<div class="pvc_clear"></div>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=facebook');" rel="nofollow" data-shared="sharing-facebook-731" class="share-facebook sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-google-plus-1"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=google-plus-1');" rel="nofollow" data-shared="sharing-google-731" class="share-google-plus-1 sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-twitter"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=twitter');" rel="nofollow" data-shared="sharing-twitter-731" class="share-twitter sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-linkedin"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=linkedin');" rel="nofollow" data-shared="sharing-linkedin-731" class="share-linkedin sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-reddit"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=reddit');" rel="nofollow" data-shared="" class="share-reddit sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-end"></li><li class="share-pocket"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=pocket');" rel="nofollow" data-shared="" class="share-pocket sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=pocket" target="_blank" title="Click to share on Pocket"><span>Pocket</span></a></li><li class="share-email"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=email');" rel="nofollow" data-shared="" class="share-email sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-end"></li><li class="share-print"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/#print');" rel="nofollow" data-shared="" class="share-print sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-tumblr"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=tumblr');" rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-end"></li><li class="share-pinterest"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=pinterest');" rel="nofollow" data-shared="sharing-pinterest-731" class="share-pinterest sd-button share-icon"  href="https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-end"></li></ul></div></div></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-62865456-731-5918170adec59' data-src='//widgets.wp.com/likes/#blog_id=62865456&amp;post_id=731&amp;origin=www.matrixtsl.com&amp;obj_id=62865456-731-5918170adec59' data-name='like-post-frame-62865456-731-5918170adec59'><h3 class="sd-title">Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>														 
+													</div>
+						<!-- End Content -->
+							
+							<!-- Start Related Posts -->
+							<div class="related-posts"><h3>Related Posts</h3><div class="postauthor-top"><ul>								<li class=" rpexcerpt1 ">
+									<a rel="nofollow" class="relatedthumb" href="https://www.matrixtsl.com/blog/the-gamification-of-learning-matrix-flowcode-feels-the-force/" rel="bookmark" title="The “gamification” of learning: Matrix Flowcode feels the Force">
+										<span class="rthumb">
+																							<img width="60" height="45" src="https://www.matrixtsl.com/blog/wp-content/uploads/2014/01/Matrix_BETT_1.png" class="attachment-widgetthumb size-widgetthumb wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2014/01/Matrix_BETT_1.png 504w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/01/Matrix_BETT_1-300x225.png 300w, https://www.matrixtsl.com/blog/wp-content/uploads/2014/01/Matrix_BETT_1-280x207.png 280w" sizes="(max-width: 60px) 100vw, 60px" />																					</span>
+										<span>
+											The “gamification” of learning: Matrix Flowcode feels the Force										</span>
+									</a>
+									<div class="meta">
+										<a href="https://www.matrixtsl.com/blog/the-gamification-of-learning-matrix-flowcode-feels-the-force/#respond" rel="nofollow">No Comments</a> | <span class="thetime">Jan 23, 2014</span>
+									</div> <!--end .entry-meta-->
+								</li>
+																								<li class=" rpexcerpt2 last">
+									<a rel="nofollow" class="relatedthumb" href="https://www.matrixtsl.com/blog/intelligent-rgb-led-support-in-flowcode-7/" rel="bookmark" title="Intelligent RGB LED Support in Flowcode 7">
+										<span class="rthumb">
+																							<img width="60" height="57" src="https://www.matrixtsl.com/blog/wp-content/uploads/2016/09/IMG_4923_Cropped-60x57.jpg" class="attachment-widgetthumb size-widgetthumb wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2016/09/IMG_4923_Cropped-60x57.jpg 60w, https://www.matrixtsl.com/blog/wp-content/uploads/2016/09/IMG_4923_Cropped-140x130.jpg 140w" sizes="(max-width: 60px) 100vw, 60px" />																					</span>
+										<span>
+											Intelligent RGB LED Support in Flowcode 7										</span>
+									</a>
+									<div class="meta">
+										<a href="https://www.matrixtsl.com/blog/intelligent-rgb-led-support-in-flowcode-7/#respond" rel="nofollow">No Comments</a> | <span class="thetime">Sep 30, 2016</span>
+									</div> <!--end .entry-meta-->
+								</li>
+																								<li class=" rpexcerpt3 ">
+									<a rel="nofollow" class="relatedthumb" href="https://www.matrixtsl.com/blog/internet-of-things-made-simple-flowcode-simulated-webserver-tcp-comms/" rel="bookmark" title="Internet of Things made simple – Flowcode Simulated Webserver &#038; TCP Comms">
+										<span class="rthumb">
+																							<img width="60" height="44" src="https://www.matrixtsl.com/blog/wp-content/uploads/2015/01/internet_of_things.png" class="attachment-widgetthumb size-widgetthumb wp-post-image" alt="" title="" />																					</span>
+										<span>
+											Internet of Things made simple – Flowcode Simulated Webserver &#038; TCP Comms										</span>
+									</a>
+									<div class="meta">
+										<a href="https://www.matrixtsl.com/blog/internet-of-things-made-simple-flowcode-simulated-webserver-tcp-comms/#respond" rel="nofollow">No Comments</a> | <span class="thetime">Nov 7, 2014</span>
+									</div> <!--end .entry-meta-->
+								</li>
+																								<li class="last rpexcerpt4 last">
+									<a rel="nofollow" class="relatedthumb" href="https://www.matrixtsl.com/blog/xy-plotter-1/" rel="bookmark" title="XY Plotter 1 &#8211; Overview">
+										<span class="rthumb">
+																							<img src="https://www.matrixtsl.com/blog/wp-content/themes/point/images/smallthumb.png" alt="XY Plotter 1 &#8211; Overview" class="wp-post-image" />
+																					</span>
+										<span>
+											XY Plotter 1 &#8211; Overview										</span>
+									</a>
+									<div class="meta">
+										<a href="https://www.matrixtsl.com/blog/xy-plotter-1/#respond" rel="nofollow">No Comments</a> | <span class="thetime">Aug 22, 2013</span>
+									</div> <!--end .entry-meta-->
+								</li>
+																</ul></div></div>							<!-- End Related Posts -->
+						  
+													<!-- Start Author Box -->
+							<div class="postauthor-container">
+								<h4>About The Author</h4>
+								<div class="postauthor">
+									<img alt='' src='https://secure.gravatar.com/avatar/c3bd9007e49584ca18c1f9950557f79e?s=100&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c3bd9007e49584ca18c1f9950557f79e?s=200&amp;d=mm&amp;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' />									<h5>BenR</h5>
+									<p>Embedded engineer with experience in Cybernetics (HMI), Robotics, Mechatronics, Control Systems and Communications using Microcontrollers and Microprocessors.</p>
+								</div>
+							</div>
+							<!-- End Author Box -->
+						  
+					</div>
+				</div>
+				
+<!-- You can start editing here. -->
+	<div id="comments">
+		<div class="total-comments">3 Comments</div>
+		<ol class="commentlist">
+			<div class="navigation">
+				<div class="alignleft"></div>
+				<div class="alignright"></div>
+			</div>
+					<li class="comment even thread-even depth-1" id="li-comment-252724">
+			<div id="comment-252724" style="position:relative;" itemscope itemtype="http://schema.org/UserComments">
+				<div class="comment-author vcard">
+					<img alt='' src='https://secure.gravatar.com/avatar/a6578d5997b008bbe9a3dd7cb2f3c5b3?s=70&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a6578d5997b008bbe9a3dd7cb2f3c5b3?s=140&amp;d=mm&amp;r=g 2x' class='avatar avatar-70 photo' height='70' width='70' />					<div class="comment-metadata">
+					<span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person">Jan Lichtenbelt</span>					<time>October 29, 2015</time>
+					<span class="comment-meta">
+											</span>
+					<span class="reply">
+						<a rel='nofollow' class='comment-reply-link' href='https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?replytocom=252724#respond' onclick='return addComment.moveForm( "comment-252724", "252724", "respond", "731" )' aria-label='Reply to Jan Lichtenbelt'>Reply</a>					</span>
+					</div>
+				</div>
+								<div class="commentmetadata" itemprop="commentText">
+					<p>Nice and good to understand explanation of two ways of exchange data!</p>
+				</div>
+			</div>
+		</li>
+	</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-253626">
+			<div id="comment-253626" style="position:relative;" itemscope itemtype="http://schema.org/UserComments">
+				<div class="comment-author vcard">
+					<img alt='' src='https://secure.gravatar.com/avatar/4a3156726c34e2103f255163eafe71c0?s=70&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4a3156726c34e2103f255163eafe71c0?s=140&amp;d=mm&amp;r=g 2x' class='avatar avatar-70 photo' height='70' width='70' />					<div class="comment-metadata">
+					<span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person">benchhida</span>					<time>February 18, 2017</time>
+					<span class="comment-meta">
+											</span>
+					<span class="reply">
+						<a rel='nofollow' class='comment-reply-link' href='https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?replytocom=253626#respond' onclick='return addComment.moveForm( "comment-253626", "253626", "respond", "731" )' aria-label='Reply to benchhida'>Reply</a>					</span>
+					</div>
+				</div>
+								<div class="commentmetadata" itemprop="commentText">
+					<p>PLEASE if somebody has file flowcode+ isis PIC to PIC  SPI Communication ;</p>
+				</div>
+			</div>
+		</li>
+	<ul class="children">
+		<li class="comment byuser comment-author-liamw even depth-2" id="li-comment-253639">
+			<div id="comment-253639" style="position:relative;" itemscope itemtype="http://schema.org/UserComments">
+				<div class="comment-author vcard">
+					<img alt='' src='https://secure.gravatar.com/avatar/1453bbaf9ca02a0735e91fb9f8bdf470?s=70&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1453bbaf9ca02a0735e91fb9f8bdf470?s=140&amp;d=mm&amp;r=g 2x' class='avatar avatar-70 photo' height='70' width='70' />					<div class="comment-metadata">
+					<span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixmultimedia.co.uk');"  href='http://www.matrixmultimedia.co.uk' rel='external nofollow' class='url'>Liam Walton</a></span>					<time>March 2, 2017</time>
+					<span class="comment-meta">
+											</span>
+					<span class="reply">
+						<a rel='nofollow' class='comment-reply-link' href='https://www.matrixtsl.com/blog/simplified-communications-i%c2%b2c-and-spi/?replytocom=253639#respond' onclick='return addComment.moveForm( "comment-253639", "253639", "respond", "731" )' aria-label='Reply to Liam Walton'>Reply</a>					</span>
+					</div>
+				</div>
+								<div class="commentmetadata" itemprop="commentText">
+					<p>Hi benchhida, get in touch with us via our website <a onclick="javascript:pageTracker._trackPageview('/outgoing/www.matrixtsl.com/contact.php');"  href="http://www.matrixtsl.com/contact.php" rel="nofollow">http://www.matrixtsl.com/contact.php</a> and we will help you out as much as we can!</p>
+				</div>
+			</div>
+		</li>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			<div class="navigation bottomnav">
+				<div class="alignleft"></div>
+				<div class="alignright"></div>
+			</div>
+		</ol>
+	</div>
+	<div class="bordersperator2"></div>
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+			
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/blog/simplified-communications-i%C2%B2c-and-spi/#respond" style="display:none;">Cancel reply</a></small></h3>
+			<form id="commentform" class="comment-form">
+				<iframe src="https://jetpack.wordpress.com/jetpack-comment/?blogid=62865456&#038;postid=731&#038;comment_registration=0&#038;require_name_email=1&#038;stc_enabled=1&#038;stb_enabled=1&#038;show_avatars=1&#038;avatar_default=mystery&#038;greeting=Leave+a+Reply&#038;greeting_reply=Leave+a+Reply+to+%25s&#038;color_scheme=light&#038;lang=en_US&#038;jetpack_version=4.4.2&#038;sig=d1a88ca6356e0950e2f0c8da51c3d696e35972ae#parent=https%3A%2F%2Fwww.matrixtsl.com%2Fblog%2Fsimplified-communications-i%25C2%25B2c-and-spi%2F" allowtransparency="false" style="width:100%; height: 430px;border:0;" frameBorder="0" scrolling="no" name="jetpack_remote_comment" id="jetpack_remote_comment"></iframe>
+			</form>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="" />
+
+				</div>
+	</div>
+					</article>
+		<!-- End Article -->
+		<!-- Start Sidebar -->
+		
+<aside class="sidebar c-4-12">
+	<div id="sidebars" class="sidebar">
+		<div class="sidebar_list">
+			<aside id="search-3" class="widget widget_search"><form method="get" id="searchform" class="search-form" action="https://www.matrixtsl.com/blog" _lpchecked="1">
+	<fieldset>
+		<input type="text" name="s" id="s" value="Search the site" onblur="if (this.value == '') {this.value = 'Search the site';}" onfocus="if (this.value == 'Search the site') {this.value = '';}" >
+		<button id="search-image" class="sbutton" type="submit" value="">
+    		<i class="point-icon icon-search"></i>
+    	</button>
+		<!-- <input id="search-image" class="sbutton" type="submit" style="border:0; vertical-align: top;" value=""> -->
+	</fieldset>
+</form></aside><aside id="nav_menu-4" class="widget widget_nav_menu"><div class="menu-sidebar-container"><ul id="menu-sidebar" class="menu"><li id="menu-item-1189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1189"><a href="http://www.matrixtsl.com/solutions/science-physics/">Simplifying electricity</a></li>
+<li id="menu-item-1190" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1190"><a href="http://www.matrixtsl.com/solutions/technology-computerscience/">Computer Programming</a></li>
+<li id="menu-item-1191" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1191"><a href="http://www.matrixtsl.com/solutions/aviation/">Aviation Training</a></li>
+<li id="menu-item-1192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1192"><a href="http://www.matrixtsl.com/solutions/automotive/">Automotive Electrical training</a></li>
+<li id="menu-item-1193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1193"><a href="http://www.matrixtsl.com/solutions/robotics-mechatronics/">Robotics  Mechatronics</a></li>
+<li id="menu-item-1194" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"><a href="http://www.matrixtsl.com/solutions/electrical-engineering/">Electrical Training</a></li>
+<li id="menu-item-1195" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195"><a href="http://www.matrixtsl.com/solutions/electronics/">Electronics</a></li>
+<li id="menu-item-1196" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1196"><a href="http://www.matrixtsl.com/solutions/basic-engineering/">Basic Engineering</a></li>
+<li id="menu-item-1197" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1197"><a href="http://www.matrixtsl.com/professional-services/">Professional Services</a></li>
+<li id="menu-item-1202" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1202"><a href="http://www.matrixtsl.com/eblocks.php">Rapid Prototyping</a></li>
+<li id="menu-item-1203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1203"><a href="http://www.matrixtsl.com/flowcode/">Arduino Programming</a></li>
+<li id="menu-item-1204" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1204"><a href="http://www.matrixtsl.com/flowcode/">PIC Programming</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1216"><a href="https://www.matrixtsl.com/eblocks.php">Electronic Kits</a></li>
+<li id="menu-item-1217" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1217"><a href="http://www.matrixtsl.com/solutions/automotive/">Automotive Engineering</a></li>
+<li id="menu-item-1218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1218"><a href="http://www.matrixtsl.com/flowcode/">Arduino IDE</a></li>
+<li id="menu-item-1243" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1243"><a href="https://www.matrixtsl.com/blog/getting-started-with-arduino/">Getting Started &#8211; Arduino</a></li>
+</ul></div></aside><aside id="categories-5" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-130"><a href="https://www.matrixtsl.com/blog/category/arduino/" >Arduino</a>
+</li>
+	<li class="cat-item cat-item-86"><a href="https://www.matrixtsl.com/blog/category/customers/" >Customers</a>
+</li>
+	<li class="cat-item cat-item-87"><a href="https://www.matrixtsl.com/blog/category/digital/" >Digital</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://www.matrixtsl.com/blog/category/examples/" >Examples</a>
+</li>
+	<li class="cat-item cat-item-83"><a href="https://www.matrixtsl.com/blog/category/exhibitions-and-trips/" >Exhibitions &amp; trips</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://www.matrixtsl.com/blog/category/flowcode/" >Flowcode</a>
+</li>
+	<li class="cat-item cat-item-106"><a href="https://www.matrixtsl.com/blog/category/general/" >General</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://www.matrixtsl.com/blog/category/hardware/" >Hardware</a>
+</li>
+	<li class="cat-item cat-item-142"><a href="https://www.matrixtsl.com/blog/category/kickstarter/" >Kickstarter</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.matrixtsl.com/blog/category/matrixtsl/" >Matrix TSL</a>
+</li>
+	<li class="cat-item cat-item-84"><a href="https://www.matrixtsl.com/blog/category/partners-and-distributors/" >Partners</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="https://www.matrixtsl.com/blog/category/pic-programming/" >PIC Programming</a>
+</li>
+	<li class="cat-item cat-item-85"><a href="https://www.matrixtsl.com/blog/category/business-development/" >Projects</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="https://www.matrixtsl.com/blog/category/robotics/" >Robotics</a>
+</li>
+		</ul>
+</aside>		</div>
+	</div><!--sidebars-->
+</aside>
+		<!-- End Sidebar -->
+			</div><!-- .content -->
+</div><!-- #page -->
+<footer>
+			<div class="carousel">
+			<h3 class="frontTitle"><div class="latest">3</div></h3>
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/delivering-the-20162017-btec-nationals-higher-nationals-in-engineering/" title="Delivering the 2016/2017 BTEC Nationals &#038; Higher Nationals in Engineering" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-3-140x130.png" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-3-140x130.png 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-3-60x57.png 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Delivering the 2016/2017 BTEC Nationals &#038; Higher Nationals in Engineering</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/supporting-wjeceduqas-a-level-electronics/" title="Supporting WJEC/Eduqas A-Level Electronics" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/VirtualPIC-140x130.jpg" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/VirtualPIC-140x130.jpg 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/VirtualPIC-60x57.jpg 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Supporting WJEC/Eduqas A-Level Electronics</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/science-engineering-technology-by-matrix/" title="Science, Engineering, Technology by Matrix" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-2-140x130.png" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-2-140x130.png 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2017/03/FI-2-60x57.png 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Science, Engineering, Technology by Matrix</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/matrix-atlab-supplying-stem-education-in-the-uae/" title="Matrix &#038; ATLAB &#8211; supplying STEM education in the UAE" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/TRAINING-IMG1-140x130.jpg" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/TRAINING-IMG1-140x130.jpg 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/TRAINING-IMG1-60x57.jpg 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Matrix &#038; ATLAB &#8211; supplying STEM education in the UAE</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/another-utc-using-matrix-engineering-solutions/" title="Another UTC using Matrix Engineering solutions" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/UTCLeeds_sensecontrol-140x130.png" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/UTCLeeds_sensecontrol-140x130.png 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2017/01/UTCLeeds_sensecontrol-60x57.png 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Another UTC using Matrix Engineering solutions</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+								<div class="excerpt">
+						<a href="https://www.matrixtsl.com/blog/port-moresby-international-science-fair/" title="Port Moresby International Science Fair" rel="nofollow" id="footer-thumbnail">
+							<div>
+								<div class="hover"><i class="point-icon icon-zoom-in"></i></div>
+								 
+									<img width="140" height="130" src="https://www.matrixtsl.com/blog/wp-content/uploads/2016/12/POMIS-Science-Fair_Dec-2016_2-140x130.jpg" class="attachment-carousel size-carousel wp-post-image" alt="" title="" srcset="https://www.matrixtsl.com/blog/wp-content/uploads/2016/12/POMIS-Science-Fair_Dec-2016_2-140x130.jpg 140w, https://www.matrixtsl.com/blog/wp-content/uploads/2016/12/POMIS-Science-Fair_Dec-2016_2-60x57.jpg 60w" sizes="(max-width: 140px) 100vw, 140px" />															</div>
+							<p class="footer-title">
+								<span class="featured-title">Port Moresby International Science Fair</span>
+							</p>
+						</a>
+					</div><!--.post excerpt-->                
+			 
+		</div>
+	</footer><!--footer-->
+<!--start copyrights-->
+<div class="copyrights">
+	<div class="row" id="copyright-note">
+				<div class="copyright-left-text">Copyright &copy; 2017 <a href="https://www.matrixtsl.com/blog" title="" rel="nofollow">Matrix Blog</a>.</div>
+		<div class="copyright-text">
+			<a href="http://www.matrixtsl.com/">Matrix Technology Solutions Limited</a>.		</div>
+		<div class="footer-navigation">
+							<ul class="menu">
+									</ul>
+					</div>
+		<div class="top"><a href="#top" class="toplink"><i class="point-icon icon-up-dir"></i></a></div>
+	</div>
+</div>
+<!--end copyrights-->
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3779315-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+	<div style="display:none">
+	<div class="grofile-hash-map-c3bd9007e49584ca18c1f9950557f79e">
+	</div>
+	<div class="grofile-hash-map-a6578d5997b008bbe9a3dd7cb2f3c5b3">
+	</div>
+	<div class="grofile-hash-map-4a3156726c34e2103f255163eafe71c0">
+	</div>
+	<div class="grofile-hash-map-1453bbaf9ca02a0735e91fb9f8bdf470">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/www.matrixtsl.com\/blog\/simplified-communications-i%c2%b2c-and-spi\/":731};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="/blog/simplified-communications-i%C2%B2c-and-spi/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script>jQuery( document ).ready( function(){ document.getElementById('jetpack-source_f_name').value = '' });</script>
+			
+			<img style="float: right; display: none" class="loading" src="https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201719'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2017Mayaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.7.4'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/themes/point/js/customscripts.js?ver=20120212'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-includes/js/comment-reply.min.js?ver=4.7.4'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.4'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/_inc/postmessage.js?ver=4.4.2'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/_inc/jquery.jetpack-resize.js?ver=4.4.2'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/_inc/jquery.inview.js?ver=4.4.2'></script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/modules/likes/queuehandler.js?ver=4.4.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.matrixtsl.com/blog/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?ver=4.4.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+</script>
+		<iframe src='https://widgets.wp.com/likes/master.html?ver=20160429#ver=20160429' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		<!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			var comm_par_el = document.getElementById( 'comment_parent' ),
+			    comm_par = (comm_par_el && comm_par_el.value) ? comm_par_el.value : '',
+			    frame = document.getElementById( 'jetpack_remote_comment' ),
+			    tellFrameNewParent;
+
+			tellFrameNewParent = function() {
+				if ( comm_par ) {
+					frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=62865456&postid=731&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=4.4.2&sig=d1a88ca6356e0950e2f0c8da51c3d696e35972ae#parent=https%3A%2F%2Fwww.matrixtsl.com%2Fblog%2Fsimplified-communications-i%25C2%25B2c-and-spi%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+				} else {
+					frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=62865456&postid=731&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=4.4.2&sig=d1a88ca6356e0950e2f0c8da51c3d696e35972ae#parent=https%3A%2F%2Fwww.matrixtsl.com%2Fblog%2Fsimplified-communications-i%25C2%25B2c-and-spi%2F";
+				}
+			};
+
+	
+			if ( 'undefined' !== typeof addComment ) {
+				addComment._Jetpack_moveForm = addComment.moveForm;
+
+				addComment.moveForm = function( commId, parentId, respondId, postId ) {
+					var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ), cancelClick, cancel;
+
+					if ( false === returnValue ) {
+						cancel = document.getElementById( 'cancel-comment-reply-link' );
+						cancelClick = cancel.onclick;
+						cancel.onclick = function() {
+							var cancelReturn = cancelClick.call( this );
+							if ( false !== cancelReturn ) {
+								return cancelReturn;
+							}
+
+							if ( !comm_par ) {
+								return cancelReturn;
+							}
+
+							comm_par = 0;
+
+							tellFrameNewParent();
+
+							return cancelReturn;
+						};
+					}
+
+					if ( comm_par == parentId ) {
+						return returnValue;
+					}
+
+					comm_par = parentId;
+
+					tellFrameNewParent();
+
+					return returnValue;
+				};
+			}
+
+	
+			if ( window.postMessage ) {
+				if ( document.addEventListener ) {
+					window.addEventListener( 'message', function( event ) {
+						if ( "https:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				} else if ( document.attachEvent ) {
+					window.attachEvent( 'message', function( event ) {
+						if ( "https:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				}
+			}
+		</script>
+
+	<script type='text/javascript' src='https://stats.wp.com/e-201719.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.4.2',blog:'62865456',post:'731',tz:'1',srv:'www.matrixtsl.com'} ]);
+	_stq.push([ 'clickTrackerInit', '62865456', '731' ]);
+</script>
+</div><!-- main-container -->
+
+</body>
+</html>
