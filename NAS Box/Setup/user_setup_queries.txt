@@ -1,0 +1,913 @@
+# Privileges for `admin`@`localhost`
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY PASSWORD '*929F988C8AA8D553D8A16A8CC04FC243CFF6664F' WITH GRANT OPTION;
+
+
+# Privileges for `adminiface`@`%`
+
+GRANT USAGE ON *.* TO 'adminiface'@'%' IDENTIFIED BY PASSWORD '*795F492A879847B576D8CD375B0BAE765D0479DE';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'adminiface'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'adminiface'@'%';
+
+
+# Privileges for `gbuttspi`@`%`
+
+GRANT USAGE ON *.* TO 'gbuttspi'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`G5Readings` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'gbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'gbuttspi'@'%';
+
+
+# Privileges for `hanhampi`@`%`
+
+GRANT USAGE ON *.* TO 'hanhampi'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`G3Readings` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, REFERENCES (ID) ON `rivercontrolsystem`.`EventLog` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'hanhampi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'hanhampi'@'%';
+
+
+# Privileges for `nasbox`@`localhost`
+
+GRANT USAGE ON *.* TO 'nasbox'@'localhost' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.* TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemTick` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`NASControl` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'nasbox'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'nasbox'@'localhost';
+
+
+# Privileges for `pma`@`localhost`
+
+GRANT ALL PRIVILEGES ON *.* TO 'pma'@'localhost' IDENTIFIED BY PASSWORD '*387B36D01A7C5EC3AF24E860C269DAA274EF94EF' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `phpmyadmin`.* TO 'pma'@'localhost' WITH GRANT OPTION;
+
+
+# Privileges for `root`@`localhost`
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY PASSWORD '*9CFBBC772F3F6C106020035386DA5BBBF1249A11' WITH GRANT OPTION;
+
+
+# Privileges for `sbuttspi`@`%`
+
+GRANT USAGE ON *.* TO 'sbuttspi'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`G6Readings` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'sbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'sbuttspi'@'%';
+
+
+# Privileges for `sumppi`@`%`
+
+GRANT USAGE ON *.* TO 'sumppi'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`SUMPReadings` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'sumppi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'sumppi'@'%';
+
+
+# Privileges for `valve1`@`%`
+
+GRANT USAGE ON *.* TO 'valve1'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve1'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE1Readings` TO 'valve1'@'%';
+
+
+# Privileges for `valve10`@`%`
+
+GRANT USAGE ON *.* TO 'valve10'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve10'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE10Readings` TO 'valve10'@'%';
+
+
+# Privileges for `valve11`@`%`
+
+GRANT USAGE ON *.* TO 'valve11'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE11Readings` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve11'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve11'@'%';
+
+
+# Privileges for `valve12`@`%`
+
+GRANT USAGE ON *.* TO 'valve12'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE12Readings` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve12'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve12'@'%';
+
+
+# Privileges for `valve2`@`%`
+
+GRANT USAGE ON *.* TO 'valve2'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE2Readings` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve2'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve2'@'%';
+
+
+# Privileges for `valve3`@`%`
+
+GRANT USAGE ON *.* TO 'valve3'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE3Readings` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve3'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve3'@'%';
+
+
+# Privileges for `valve4`@`%`
+
+GRANT USAGE ON *.* TO 'valve4'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE4Readings` TO 'valve4'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve4'@'%';
+
+
+# Privileges for `valve5`@`%`
+
+GRANT USAGE ON *.* TO 'valve5'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE5Readings` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve5'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve5'@'%';
+
+
+# Privileges for `valve6`@`%`
+
+GRANT USAGE ON *.* TO 'valve6'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE6Readings` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve6'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve6'@'%';
+
+
+# Privileges for `valve7`@`%`
+
+GRANT USAGE ON *.* TO 'valve7'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve7'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE7Readings` TO 'valve7'@'%';
+
+
+# Privileges for `valve8`@`%`
+
+GRANT USAGE ON *.* TO 'valve8'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE8Readings` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve8'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve8'@'%';
+
+
+# Privileges for `valve9`@`%`
+
+GRANT USAGE ON *.* TO 'valve9'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`VALVE9Readings` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'valve9'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'valve9'@'%';
+
+
+# Privileges for `visitoriface`@`%`
+
+GRANT USAGE ON *.* TO 'visitoriface'@'%' IDENTIFIED BY PASSWORD '*3FCB419A8573778273A877A56423B53C6E91EB5A';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'visitoriface'@'%';
+
+
+# Privileges for `wbuttspi`@`%`
+
+GRANT USAGE ON *.* TO 'wbuttspi'@'%' IDENTIFIED BY PASSWORD '*829B0355CE1FE4CB50B14FA83FA165AB04DE5D76';
+
+GRANT SELECT ON `rivercontrolsystem`.* TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`EventLog` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE10Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G6Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SUMPControl` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE12Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE11Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE9Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE5Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE3Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`SystemStatus` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE7Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G4Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE2Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G3Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE4Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE1Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE8Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT ON `rivercontrolsystem`.`G4Readings` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`G5Control` TO 'wbuttspi'@'%';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `rivercontrolsystem`.`VALVE6Control` TO 'wbuttspi'@'%';
